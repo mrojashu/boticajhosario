@@ -1,0 +1,19 @@
+<ion-content class="background">
+  <div id="login-page">
+    <div class="container">
+      <div class="form-login" action="index.html">
+        <h2 class="form-login-heading">INGRESO A SISTEMA DE ALMACEN</h2>
+        <div class="login-wrap">
+          <input type="text" class="form-control" [(ngModel)]="ht_p_co_usua" placeholder="USUARIO" autofocus>
+          <br>
+          <input type="password" class="form-control" [(ngModel)]="ht_p_no_clav" placeholder="CONTRASEÑA">
+          <label class="checkbox">
+          	<br>
+            </label>
+          <button ion-button class="btn btn-theme btn-block" (click)="ts_tmusua_q001(ht_p_co_usua,ht_p_no_clav)"><i class="fa fa-lock"></i>&nbsp;&nbsp;INGRESAR</button>
+          <br>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

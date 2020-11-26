@@ -1,0 +1,21 @@
+<ion-menu [content]="content" type="overlay">
+  <ion-header class="headergen">
+    <ion-toolbar class="headermenu" color="dashio">
+      <img [src]="ar_re_de_foto" *ngIf="ar_re_de_foto" class="img-circle" width="150" class="headergen"\>
+      <ion-title class="titulo">{{ar_re_no_trab}}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content class="contentgen">
+    <ion-list>
+      <button ion-item detail-none block menuClose *ngFor="let p of pages" (click)="openPage(p.page)" color="dashio2">
+        <ion-icon item-start [name]="p.icon"></ion-icon>
+        {{p.title}}
+      </button>
+    </ion-list>
+  </ion-content>
+
+</ion-menu>
+
+<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+<ion-nav #content main [root]="rootPage"></ion-nav>
