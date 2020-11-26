@@ -39,6 +39,9 @@
 		break;
 		case 'fu_tmalma_ingr_q001':
 			ph_tmalma_ingr_q001($datos);
+		break;
+		case 'fu_tcprod_alma_q003':
+			ph_tcprod_alma_q003();
 		break;		
 		default:
 		break;
@@ -73,6 +76,26 @@
 	function ph_tcprod_alma_q001(){
 
 		$co_sql="CALL sp_tcprod_alma_q001();";
+		include "cone_db.php";
+
+		$co_ejec=$db->query($co_sql);
+		$co_argl=array();
+
+		if($co_ejec){
+			while ($resultado=mysqli_fetch_assoc($co_ejec)):
+				$co_argl[]=$resultado;
+			endwhile;
+			dv_info($co_argl);
+		}else{
+			dv_info(mysqli_error($db));
+		}
+	}
+
+	function ph_tcprod_alma_q002($datos){
+
+		$v_ph_dato="{$datos['ts_c_dato']}";
+
+		$co_sql="CALL sp_tcprod_alma_q002('$v_ph_dato');";
 		include "cone_db.php";
 
 		$co_ejec=$db->query($co_sql);
@@ -148,6 +171,24 @@
 	function ph_tmalma_ingr_q001(){
 
 		$co_sql="CALL sp_tmalma_ingr_q001();";
+		include "cone_db.php";
+
+		$co_ejec=$db->query($co_sql);
+		$co_argl=array();
+
+		if($co_ejec){
+			while ($resultado=mysqli_fetch_assoc($co_ejec)):
+				$co_argl[]=$resultado;
+			endwhile;
+			dv_info($co_argl);
+		}else{
+			dv_info(mysqli_error($db));
+		}
+	}
+
+	function ph_tcprod_alma_q003(){
+
+		$co_sql="CALL sp_tcprod_alma_q003();";
 		include "cone_db.php";
 
 		$co_ejec=$db->query($co_sql);
