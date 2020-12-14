@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams, Nav, App } from 'ionic-angular';
 import { GeneService } from '../../../services/gene.service';
 
 import { IndxPage01 } from '../../01-alma/01-indx/01-indx'
-import { MoviPage01 } from '../../01-alma/01-movi/01-movi'
+import { TabsPage01 } from '../../01-alma/01-tabs/01-tabs'
 import { ProdPage01 } from '../../01-alma/01-prod/01-prod'
 import { OpciPage01 } from '../../01-alma/01-opci/01-opci'
 
@@ -45,10 +45,10 @@ export class MenuPage00 {
   ionViewWillEnter() {
     if(this.geneService.ar_re_tmusua['0']['co_grup']=='ALM'){
       this.pages=[
-        { title: 'INVENTARIO GENERAL', page: IndxPage01, icon: 'stats' },
-        { title: 'CONTROL DE MOVIMIENTOS', page: MoviPage01, icon: 'list-box' },
-        { title: 'PANEL DE PRODUCTOS', page: ProdPage01, icon: 'paper' },
-        { title: 'OPCIONES DE ALMACEN', page: OpciPage01, icon: 'subway' }
+        { title: 'INVENTARIO GENERAL', page: IndxPage01, icon: 'clipboard' },
+        { title: 'CONTROL DE MOVIMIENTOS', page: TabsPage01, icon: 'bookmarks' },
+        { title: 'PANEL DE PRODUCTOS', page: ProdPage01, icon: 'filing' },
+        { title: 'OPCIONES DE ALMACEN', page: OpciPage01, icon: 'construct' }
       ];
       this.openPage(IndxPage01);      
     }

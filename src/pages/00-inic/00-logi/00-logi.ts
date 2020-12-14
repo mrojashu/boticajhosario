@@ -23,25 +23,94 @@ export class LogiPage00 {
     console.log('ionViewDidLoad 00LogiPage');
   }
 
-  	ts_tmusua_q001(ts_p_co_usua,ts_p_no_clav){
+  ts_tmusua_q001(ts_p_co_usua,ts_p_no_clav){
 
-  	const loader = this.loadingCtrl.create({
+    const loader = this.loadingCtrl.create({
         content: "INICIANDO SESION, espere un momento..."
     });
 
 	loader.present();
 
-	this.geneService.ts_tmusua_q001(ts_p_co_usua,ts_p_no_clav).then(data=>{
-		if(data=='fallo'){
-	      loader.dismiss();
-	      const alert = this.alertCtrl.create({
-	          title: 'ERROR DE CREDENCIALES',
-	              subTitle: 'VERIFICA TUS CREDENCIALES Y VUELVELO A INTENTAR',
-	              buttons: ['OK']
-	          });
-	      alert.present();
-	    }			
-	}).then(data=>loader.dismiss()).then(data=>this.navCtrl.setRoot(MenuPage00));
+  if(ts_p_co_usua==""||ts_p_co_usua==null){
+    loader.dismiss();
+    const alert = this.alertCtrl.create({
+            title: 'INGRESAR USUARIO',
+                subTitle: 'VERIFICA TUS CREDENCIALES Y VUELVELO A INTENTAR',
+                buttons: ['OK']
+            });
+        alert.present();
+  }else{
+    if(ts_p_no_clav==""||ts_p_no_clav==null){
+        loader.dismiss();
+        const alert = this.alertCtrl.create({
+            title: 'INGRESAR CONTRASEÑA',
+                subTitle: 'VERIFICA TUS CREDENCIALES Y VUELVELO A INTENTAR',
+                buttons: ['OK']
+            });
+        alert.present();
+    }
+    else{
+      this.geneService.ts_tmusua_q001(ts_p_co_usua,ts_p_no_clav).then(data=>{
+        if(data==""){
+          console.log('hasta aqui1');
+          loader.dismiss();
+          const alert = this.alertCtrl.create({
+              title: 'USUARIO NO SE ENCUENTRA',
+                  subTitle: 'VERIFICA TUS CREDENCIALES Y VUELVELO A INTENTAR',
+                  buttons: ['OK']
+              });
+          alert.present();
+        }
+        else{
+          console.log('hasta aqui');
+          if(data['0']['st_usua']=='A'){
+            loader.dismiss();
+            this.navCtrl.setRoot(MenuPage00);
+          }
+          else if(data['0']['st_usua']!='A'){
+            loader.dismiss();
+            const alert = this.alertCtrl.create({
+                title: 'USUARIO NO SE ENCUENTRA ACTIVO',
+                    subTitle: 'VERIFICA TUS CREDENCIALES Y VUELVELO A INTENTAR',
+                    buttons: ['OK']
+                });
+            alert.present();
+          }
+          else if(data=='fallo'){
+            loader.dismiss();
+            const alert = this.alertCtrl.create({
+                title: 'OCURRIO UN ERROR',
+                    subTitle: 'VERIFICA TU CONEXION A INTERNET Y VUELVELO A INTENTAR',
+                    buttons: ['OK']
+                });
+            alert.present();
+          }
+          else if(data==null){
+            loader.dismiss();
+            const alert = this.alertCtrl.create({
+                title: 'OCURRIO UN ERROR',
+                    subTitle: 'VERIFICA TU CONEXION A INTERNET Y VUELVELO A INTENTAR',
+                    buttons: ['OK']
+                });
+            alert.present();
+          }
+          else{
+            loader.dismiss();
+            const alert = this.alertCtrl.create({
+                title: 'NO SE ENCUENTRA USUARIO',
+                    subTitle: 'VERIFICA TUS CREDENCIALES Y VUELVELO A INTENTAR',
+                    buttons: ['OK']
+                });
+            alert.present();
+          }  
+        }
+        });      
+    }
+  }
+
+
+
+
   }
 
 }

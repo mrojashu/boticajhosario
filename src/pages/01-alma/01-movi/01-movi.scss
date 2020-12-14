@@ -1,3 +1,25 @@
 page-01-movi {
 
+	.background {
+		background-color: #EAEAEA;
+	}
+
+	.table-container {
+		overflow-x: auto;
+	}
+
+	.table-rwd{
+		width: 1000px;
+		th:first-child{
+			width:100px;
+			position: absolute;
+			background: #fff;
+		}
+		td:first-child{
+			width:100px;
+			position: absolute;
+			background: #fff;
+		}
+	}
+
 }

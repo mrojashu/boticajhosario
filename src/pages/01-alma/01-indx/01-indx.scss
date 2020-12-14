@@ -2,7 +2,7 @@ page-01-indx {
 
 	.barra_busqueda{
 		width: 30%;
-		float: right;
+		float: left;
 	}
 
 	.b_buscar{
@@ -10,8 +10,26 @@ page-01-indx {
 		float: left;
 	}
 
-	.i_buscar{
-		width: 79%;
-		float: right;
+	.background {
+		background-color: #EAEAEA;
 	}
+
+	.table-container {
+		overflow-x: auto;
+	}
+
+	.table-rwd{
+		width: 1400px;
+		th:first-child{
+			width:150px;
+			position: absolute;
+			background: #fff;
+		}
+		td:first-child{
+			width:150px;
+			position: absolute;
+			background: #fff;
+		}
+	}
+
 }

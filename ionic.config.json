@@ -1,5 +1,7 @@
 {
   "name": "boticajhosaro",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "ionic-angular"
 }

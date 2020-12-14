@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
 import { AlmaService } from '../../../services/alma.service';
+import { Movi_01Page } from '../01-movi-01/01-movi-01'
 
 
 @IonicPage()
@@ -10,12 +11,8 @@ import { AlmaService } from '../../../services/alma.service';
 })
 export class MoviPage01 {
 
-  ar_re_ttunid_q001:any
-  ar_re_tmprod_q001:any
-  ar_re_tmalma_ingr_q001:any
-
   public event = {
-    month: Date.now()
+    month: '2021-01-01'
   }
 
   constructor(
@@ -28,12 +25,12 @@ export class MoviPage01 {
   }
 
   ionViewDidLoad() {
-    this.ar_re_tmalma_ingr_q001=this.almaService.ar_re_tmalma_ingr_q001;
-    this.ar_re_ttunid_q001 = this.almaService.ar_re_ttunid_q001;
-    this.ar_re_tmprod_q001 = this.almaService.ar_re_tmprod_q001;
+    this.almaService.ts_ttunid_q001();
+    this.almaService.ts_tmprod_q001();
+    this.almaService.ts_tmalma_ingr_q001();
   }
 
-  ts_tmalma_ingr_i001(ht_p_nu_guia,ht_p_co_prod,ht_p_co_unid,ht_p_ca_pack,ht_p_fe_venc){
+  ts_tmalma_ingr_i001(ht_p_se_guia,ht_p_co_guia,ht_p_co_prod,ht_p_co_unid,ht_p_ca_pack,ht_p_fe_venc){
 
 
     const loader = this.loadingCtrl.create({
@@ -46,9 +43,24 @@ export class MoviPage01 {
     // this.ca_co_prod=ht_p_co_prod;
     // this.ca_fe_venc=ht_p_fe_venc;
     // this.ca_co_unid=ht_p_co_unid;
-    this.almaService.ts_tmalma_ingr_i001(ht_p_nu_guia,ht_p_co_prod,ht_p_co_unid,ht_p_ca_pack,ht_p_fe_venc).then(data=>{
+    this.almaService.ts_tmalma_ingr_i001(ht_p_se_guia,ht_p_co_guia,ht_p_co_prod,ht_p_co_unid,ht_p_ca_pack,ht_p_fe_venc)
+    .then(data=>{
+      this.almaService.ts_tcprod_alma_q004();
+    })
+    .then(data=>{
+      this.ts_tcprod_alma_q003();
+    })
+    .then(data=>{
       this.ts_tmalma_ingr_i001_3();
     }).then(data=>loader.dismiss());
+  }
+
+  ts_tcprod_alma_q003(){
+    this.almaService.ts_tcprod_alma_q003().then(data=>{
+      if(data['0']['ca_uscb']!='0'){
+        this.navCtrl.setRoot(Movi_01Page);
+      }
+    });
   }
 
   // ts_tmalma_ingr_i001_2(){
@@ -82,7 +94,7 @@ export class MoviPage01 {
             });
         alert.present();        
       }
-    }).then(data=>this.ar_re_tmalma_ingr_q001=this.almaService.ar_re_tmalma_ingr_q001).then(data=>this.navCtrl.setRoot(MoviPage01));
+    });
   }
 
 }

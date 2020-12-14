@@ -15,6 +15,10 @@ import { MoviPage01 } from '../pages/01-alma/01-movi/01-movi'
 import { Movi_01Page } from '../pages/01-alma/01-movi-01/01-movi-01'
 import { ProdPage01 } from '../pages/01-alma/01-prod/01-prod'
 import { OpciPage01 } from '../pages/01-alma/01-opci/01-opci'
+import { TabsPage01 } from '../pages/01-alma/01-tabs/01-tabs'
+import { SaliPage01 } from '../pages/01-alma/01-sali/01-sali'
+import { MermPage01 } from '../pages/01-alma/01-merm/01-merm'
+import { HistPage01 } from '../pages/01-alma/01-hist/01-hist'
 
 import { IndxPage02 } from '../pages/02-rrhh/02-indx/02-indx'
 import { OpciPage02 } from '../pages/02-rrhh/02-opci/02-opci'
@@ -45,7 +49,11 @@ import { HttpClientModule } from '@angular/common/http';
     OpciPage02,
     AudiPage03,
     OpciPage03,
-    Movi_01Page
+    Movi_01Page,
+    TabsPage01,
+    SaliPage01,
+    MermPage01,
+    HistPage01
   ],
   imports: [
     BrowserModule,
@@ -67,7 +75,11 @@ import { HttpClientModule } from '@angular/common/http';
     OpciPage02,
     AudiPage03,
     OpciPage03,
-    Movi_01Page
+    Movi_01Page,
+    TabsPage01,
+    SaliPage01,
+    MermPage01,
+    HistPage01
   ],
   providers: [
     StatusBar,

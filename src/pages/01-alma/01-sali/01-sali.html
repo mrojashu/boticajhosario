@@ -1,0 +1,161 @@
+<ion-header>
+    <header class="header black-bg headerfijo">
+      <div class="sidebar-toggle-box" menuToggle>
+        <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
+      </div>
+      <!--logo start-->
+      <a class="logo"><b>SISTEMA DE <span>ALMACEN</span></b></a>
+      <!--logo end-->
+      <div class="top-menu">
+        <ul class="nav pull-right top-menu">
+          <li><a class="logout" (click)="cerr_sesi()">CERRAR SESION</a></li>
+        </ul>
+      </div>
+    </header>
+</ion-header>
+
+
+<ion-content padding class="background">
+
+	        <h3><i class="fa fa-angle-right"></i> CONTROL DE SALIDAS</h3>
+
+
+        <div class="col-lg-4 col-md-4 col-sm-12">
+            <div class="showback">
+              <h4><i class="fa fa-angle-right"></i> REGISTRO DE SALIDAS DE PRODUCTOS</h4>
+              
+              <ion-grid>
+              <ion-row>
+                <ion-col col-5>PRODUCTO</ion-col>
+                <ion-col col-7>
+                  <div class="form-group">
+                    <ion-item class="form-control" id="contact-name">
+                      <ion-select [(ngModel)]="ht_p_co_prod" placeholder="Producto" #C (ionChange)="tcprod_alma_q006(C.value)">
+                      <ion-option *ngFor='let ar_ht_tmprod_q001 of this.almaService.ar_re_tcprod_alma_q005' value="{{ar_ht_tmprod_q001.co_prod}}">{{ar_ht_tmprod_q001.no_prod}}
+                      </ion-option>
+                      </ion-select>
+                    </ion-item>
+                  </div>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col col-5>FECHA DE VENCIMIENTO</ion-col>
+                <ion-col col-7>
+                  <div class="form-group">
+                    <ion-item class="form-control" id="contact-name">
+                      <ion-select [(ngModel)]="ht_p_co_prod" placeholder="Producto">
+                      <ion-option *ngFor='let ar_ht_tmprod_q001 of this.almaService.ar_re_tcprod_alma_q006' value="{{ar_ht_tmprod_q001.fe_venc}}">{{ar_ht_tmprod_q001.fe_venc}}
+                      </ion-option>
+                      </ion-select>
+                    </ion-item>
+                  </div>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col col-4>UNIDAD</ion-col>
+                <ion-col col-8>
+                  <div class="form-group">
+                    <ion-item class="form-control" id="contact-name">
+                      <ion-select [(ngModel)]="ht_p_co_unid" placeholder="Unidad">
+                      <ion-option *ngFor='let ar_ht_ttunid_q001 of this.almaService.ar_re_ttunid_q001' value="{{ar_ht_ttunid_q001.co_unid}}">{{ar_ht_ttunid_q001.de_unid}}
+                      </ion-option>
+                      </ion-select>
+                    </ion-item>
+                  </div>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col col-5>CANTIDAD</ion-col>
+                <ion-col col-7>
+                  <div class="form-group">
+                    <input type="name" name="name" class="form-control" id="contact-name" placeholder="Cantidad" data-rule="minlen:4" data-msg="Please enter at least 4 chars" [(ngModel)]="ht_p_ca_pack">
+                  </div>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col col-5>AGENCIA</ion-col>
+                <ion-col col-7>
+                  <div class="form-group">
+                    <ion-item class="form-control" id="contact-name">
+                      <ion-select [(ngModel)]="ht_p_co_unid" placeholder="Unidad">
+                      <ion-option *ngFor='let ar_ht_ttunid_q001 of this.almaService.ar_re_tmagen_q001' value="{{ar_ht_ttunid_q001.co_agen}}">{{ar_ht_ttunid_q001.de_agen}}
+                      </ion-option>
+                      </ion-select>
+                    </ion-item>
+                  </div>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+
+              <div class="form-send">
+                <button class="btn btn-large btn-primary" (click)="ts_tmalma_ingr_i001(ht_p_se_guia,ht_p_co_guia,ht_p_co_prod,ht_p_co_unid,ht_p_ca_pack,event.month)">REGISTRAR</button>
+              </div>
+
+
+            </div>
+        </div>
+
+
+
+        <div class="col-lg-8 col-md-8 col-sm-12">
+            <div class="showback">
+              <h4><i class="fa fa-angle-right"></i> ULTIMOS INGRESOS DE PRODUCTOS</h4>
+              
+              <div class="table-container">
+               <table class="table table-bordered table-striped table-condensed table-rwd">
+
+                <hr>
+                <thead>
+                  <tr>
+                    <th>CODIGO</th>
+                      <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                    <th>NUMERO DE GUIA</th>
+                    <th>CODIGO PRODUCTO</th>
+                    <th>PRODUCTO</th>
+                    <th>UNIDAD</th>
+                    <th>CANTIDAD</th>
+                    <th>FECHA VENCIMIENTO</th>
+                    <th>INGRESO</th>
+                  </tr>
+                </thead>
+                <tbody>
+
+
+                  <tr *ngFor='let ar_ht_tmalma_ingr_q001 of this.almaService.ar_re_tmalma_ingr_q001'>
+                    <td>
+                      {{ar_ht_tmalma_ingr_q001.co_ingr}}
+                    </td>
+                      <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                    <td>
+                      {{ar_ht_tmalma_ingr_q001.nu_guia}}
+                    </td>
+                    <td>
+                      {{ar_ht_tmalma_ingr_q001.co_prod}}
+                    </td>
+                    <td>
+                      {{ar_ht_tmalma_ingr_q001.no_prod}}
+                    </td>
+                    <td>
+                      {{ar_ht_tmalma_ingr_q001.de_unid}}
+                    </td>
+                    <td>
+                      {{ar_ht_tmalma_ingr_q001.ca_pack}}
+                    </td>
+                    <td>
+                      {{ar_ht_tmalma_ingr_q001.fe_venc}}
+                    </td>
+                    <td>
+                      {{ar_ht_tmalma_ingr_q001.fe_usua_crea}}
+                    </td>
+                  </tr>
+                  
+                  
+                  
+                </tbody>
+              </table>
+              </div>
+            </div>
+            <!-- /showback -->
+        </div>
+
+</ion-content>

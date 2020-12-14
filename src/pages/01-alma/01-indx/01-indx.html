@@ -15,72 +15,83 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding class="background">
         <h3><i class="fa fa-angle-right"></i> INVENTARIO GENERAL</h3>
+
           
             <div class="showback">
+            <ion-searchbar (ionInput)="ts_tcprod_alma_q002($event)"></ion-searchbar>
               
-              <div class="barra_busqueda">
+              <div class="table-container">
+                <table class="table table-bordered table-striped table-condensed table-rwd">
 
-                  <button ion-button class="b_buscar" (click)="ts_tcprod_alma_q002(ht_p_busq)">
-                    <ion-icon name="search"></ion-icon>
-                  </button>
-                <ion-item class="i_buscar">
-                  <ion-input type="text" placeholder="BUSCAR EN INVENTARIO" [(ngModel)]="ht_p_busq"></ion-input>
-                </ion-item>
+                  <hr>
+                  <thead>
+                    <tr>
+                      <th>CO. INVENTARIO</th>
+                      <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                      <th>LABORATORIO</th>
+                      <th>CO. PRODUCTO</th>
+                      <th>PRODUCTO</th>
+                      <th>VENCIMIENTO</th>
+                      <th>ESTADO</th>
+                      <th>CANTIDAD</th>
+                      <th>UNIDAD</th>
+                      <th>CODIGO DE BARRA</th>
+                      <th>INGRESO</th>
+                      <th>SALIDA</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
 
+
+                    <tr *ngFor='let ar_ht_tcprod_alma_q001 of this.almaService.ar_re_tcprod_alma_q001'>
+                      <td>
+                        {{ar_ht_tcprod_alma_q001.co_alma}}
+                      </td>
+                      <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                      <td>
+                        {{ar_ht_tcprod_alma_q001.no_labo}}
+                      </td>
+                      <td>
+                        {{ar_ht_tcprod_alma_q001.co_prod}}
+                      </td>
+                      <td>
+                        {{ar_ht_tcprod_alma_q001.no_prod}}
+                      </td>
+                      <td>
+                        {{ar_ht_tcprod_alma_q001.fe_venc}}
+                      </td>
+                      <td>
+                        {{ar_ht_tcprod_alma_q001.st_prod}}
+                      </td>
+                      <td>
+                        {{ar_ht_tcprod_alma_q001.ca_pack}}
+                      </td>
+                      <td>
+                        {{ar_ht_tcprod_alma_q001.de_unid}}
+                      </td>
+                      <td>
+                        {{ar_ht_tcprod_alma_q001.co_barr}}
+                      </td>
+                      <td>
+                        {{ar_ht_tcprod_alma_q001.fe_usua_crea}}
+                      </td>
+                      <td>
+                        {{ar_ht_tcprod_alma_q001.fe_inac}}
+                      </td>
+                      <td>
+                        <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
+                        <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
+                        <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
+                      </td>
+                    </tr>
+                    
+                    
+                    
+                  </tbody>
+                </table>
               </div>
-              <table class="table table-striped table-advance table-hover">
-
-                <hr>
-                <thead>
-                  <tr>
-                    <th>CO. INVENTARIO</th>
-                    <th>LABORATORIO</th>
-                    <th>CO. PRODUCTO</th>
-                    <th>PRODUCTO</th>
-                    <th>CANTIDAD</th>
-                    <th>UNIDAD</th>
-                    <th>CODIGO DE BARRA</th>
-                    <th></th>
-                  </tr>
-                </thead>
-                <tbody>
-
-
-                  <tr *ngFor='let ar_ht_tcprod_alma_q001 of ar_re_tcprod_alma_q001'>
-                    <td>
-                      {{ar_ht_tcprod_alma_q001.co_alma}}
-                    </td>
-                    <td>
-                      {{ar_ht_tcprod_alma_q001.no_labo}}
-                    </td>
-                    <td>
-                      {{ar_ht_tcprod_alma_q001.co_prod}}
-                    </td>
-                    <td>
-                      {{ar_ht_tcprod_alma_q001.no_prod}}
-                    </td>
-                    <td>
-                      {{ar_ht_tcprod_alma_q001.ca_pack}}
-                    </td>
-                    <td>
-                      {{ar_ht_tcprod_alma_q001.de_unid}}
-                    </td>
-                    <td>
-                      {{ar_ht_tcprod_alma_q001.co_barr}}
-                    </td>
-                    <td>
-                      <!-- <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                      <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                      <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button> -->
-                    </td>
-                  </tr>
-                  
-                  
-                  
-                </tbody>
-              </table>
-
             </div>
 </ion-content>

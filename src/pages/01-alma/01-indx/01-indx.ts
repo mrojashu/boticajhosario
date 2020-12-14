@@ -9,7 +9,6 @@ import { AlmaService } from '../../../services/alma.service';
 })
 export class IndxPage01 {
 
-  ar_re_tcprod_alma_q001:any
 
   constructor(
   	public navCtrl: NavController, 
@@ -21,18 +20,23 @@ export class IndxPage01 {
   }
 
   ionViewDidLoad() {
-    this.almaService.ts_ttunid_q001();
-    this.almaService.ts_tmprod_q001();
-    this.almaService.ts_tmalma_ingr_q001();
-    this.almaService.ts_tcprod_alma_q001().then(data=>this.ar_re_tcprod_alma_q001=data);
+    this.almaService.ts_tcprod_alma_q001();
   }
 
-  ts_tcprod_alma_q002(ht_p_busq){
+  ts_tcprod_alma_q002(ht_p_busq: any){
+
+    console.log(ht_p_busq);
+
+    const val = ht_p_busq.target.value;
+
+    console.log(val);
+    console.log('val');
+
     const loader = this.loadingCtrl.create({
       content: "ESPERE UN MOMENTO..."
     });
     loader.present();
-    this.almaService.ts_tcprod_alma_q002(ht_p_busq).then(data=>{
+    this.almaService.ts_tcprod_alma_q002(val).then(data=>{
       if(data=="fallo"){
         loader.dismiss();
         const alert = this.alertCtrl.create({
@@ -42,7 +46,7 @@ export class IndxPage01 {
           });
           alert.present();
       }
-    }).then(data=>this.ar_re_tcprod_alma_q001=this.almaService.ar_re_tcprod_alma_q001).then(data=>{loader.dismiss();console.log(this.almaService.ar_re_tcprod_alma_q001);});
+    }).then(data=>{loader.dismiss();console.log(this.almaService.ar_re_tcprod_alma_q001);});
   }
 
 }

@@ -46,10 +46,13 @@ export class GeneService{
 		  		ts_c_no_clav: ts_p_no_clav
 
 		  	};
+		  		console.log('hola');
 		  	this.http.post(this.web_api, JSON.stringify(ar_en_tmusua_q001)).subscribe(re=>{
 		  		this.ar_re_tmusua=re;
-		  		resolve(re);
+		  			console.log(re);
+		  			resolve(re);
 		  	},(err)=>{
+		  		console.log('dffdsf');
 		  		resolve("Fallo");
 			});
 

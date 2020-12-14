@@ -28,7 +28,7 @@
                 <ion-col col-6>PRODUCTO</ion-col>
                 <ion-col col-6>
                   <div class="form-group">
-                    <input type="name" name="name" class="form-control" id="disabledInput" placeholder="Cantidad" data-rule="minlen:4" data-msg="Please enter at least 4 chars" [(ngModel)]="ht_p_ca_pack" disabled>
+                    <input type="name" name="name" class="form-control" id="disabledInput" data-rule="minlen:4" data-msg="Please enter at least 4 chars" [(ngModel)]="this.almaService.ar_re_tcprod_alma_q004['0']['no_prod']" disabled>
                   </div>
                 </ion-col>
               </ion-row>
@@ -36,7 +36,7 @@
                 <ion-col col-6>FECHA DE VENCIMIENTO</ion-col>
                 <ion-col col-6>
                   <div class="form-group">
-                    <input type="name" name="name" class="form-control" id="disabledInput" placeholder="Cantidad" data-rule="minlen:4" data-msg="Please enter at least 4 chars" [(ngModel)]="ht_p_ca_pack" disabled>
+                    <input type="name" name="name" class="form-control" id="disabledInput" data-rule="minlen:4" data-msg="Please enter at least 4 chars" [(ngModel)]="this.almaService.ar_re_fe_venc" disabled>
                   </div>
                 </ion-col>
               </ion-row>
@@ -44,7 +44,7 @@
                 <ion-col col-6>UNIDAD</ion-col>
                 <ion-col col-6>
                   <div class="form-group">
-                    <input type="name" name="name" class="form-control" id="disabledInput" placeholder="Cantidad" data-rule="minlen:4" data-msg="Please enter at least 4 chars" [(ngModel)]="ht_p_ca_pack" disabled>
+                    <input type="name" name="name" class="form-control" id="disabledInput" data-rule="minlen:4" data-msg="Please enter at least 4 chars" [(ngModel)]="this.almaService.ar_re_tcprod_alma_q004['0']['de_unid']" disabled>
                   </div>
                 </ion-col>
               </ion-row>
@@ -52,14 +52,14 @@
                 <ion-col col-6>CODIGO DE BARRA</ion-col>
                 <ion-col col-6>
                   <div class="form-group">
-                    <input type="name" name="name" class="form-control" id="contact-name" placeholder="Cantidad" data-rule="minlen:4" data-msg="Please enter at least 4 chars" [(ngModel)]="ht_p_ca_pack">
+                    <input type="name" name="name" class="form-control" id="contact-name" placeholder="Cantidad" data-rule="minlen:4" data-msg="Please enter at least 4 chars" [(ngModel)]="ht_p_ca_barr">
                   </div>
                 </ion-col>
               </ion-row>
             </ion-grid>
 
               <div class="form-send">
-                <button class="btn btn-large btn-primary" (click)="ts_tmalma_ingr_i001(ht_p_nu_guia,ht_p_co_prod,ht_p_co_unid,ht_p_ca_pack,event.month)">REGISTRAR</button>
+                <button class="btn btn-large btn-primary" (click)="ts_tcprod_alma_u001(ht_p_ca_barr)">REGISTRAR</button>
               </div>
 
 
